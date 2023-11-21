@@ -19,7 +19,7 @@ var cred1 = new NetworkCredential()
     Password = configuration["Password"]
 };
 
-UriBuilder ub = new UriBuilder("")
+//UriBuilder ub = new UriBuilder("")
 
 
 var options = new RestClientOptions("https://api.test.datacite.org/dois");

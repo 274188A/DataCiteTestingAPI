@@ -1,9 +1,6 @@
 ﻿
 
 namespace DataCiteTestingAPI;
-internal class Class1
-{
-}
 
 public class Rootobject
 {
