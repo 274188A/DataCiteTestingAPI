@@ -1,0 +1,70 @@
+{
+  "url": null,
+  "publisher": "Curtin University",
+  "publicationYear": "2022",
+  "schemaVersion": null,
+  "version": null,
+  "types": {
+    "resourceTypeGeneral": "Dataset",
+    "resourceType": "IndividualParticipant Data (IPD)"
+  },
+  "identifiers": [
+    {
+      "identifier": null,
+      "identifierType": "DOI"
+    }
+  ],
+  "creators": [
+    {
+      "name": "Reid, Christopher",
+      "nameType": "Personal",
+      "givenName": "Christopher",
+      "familyName": "Reid",
+      "nameIdentifiers": [
+        {
+          "nameIdentifier": "https://orcid.org/0000-0000-9173-3944",
+          "nameIdentifierScheme": "ORCHID",
+          "schemeURI": null
+        }
+      ]
+    }
+  ],
+  "titles": [
+    {
+      "title": "Second Australian National Blood Pressure Study",
+      "titleType": "Subtitle"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "ctep-wa@curtin.edu.au",
+      "givenName": "",
+      "familyName": "",
+      "contributorType": "Distributor",
+      "nameType": "Organizational",
+      "nameIdentifiers": [
+        {
+          "nameIdentifier": "https://ror.org/02n415q13",
+          "nameIdentifierScheme": "ROR",
+          "schemeURI": null
+        }
+      ]
+    }
+  ],
+  "relatedIdentifiers": [
+    {
+      "relatedIdentifier": "https://www.anzctr.org.au/Trial/Result/DataSharingStatement.aspx?id=383445",
+      "relatedIdentifierType": "URL",
+      "relationType": "References",
+      "schemeURI": null,
+      "schemeType": null,
+      "resourceTypeGeneral": "Dataset"
+    }
+  ],
+  "descriptions": [
+    {
+      "description": "HeSANDA1.0.0",
+      "descriptionType": "Technical Info"
+    }
+  ]
+}

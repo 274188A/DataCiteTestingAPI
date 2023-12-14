@@ -1,6 +1,4 @@
-﻿
-
-namespace DataCiteTestingAPI;
+﻿namespace DataCiteTestingAPI;
 
 public class Rootobject
 {

@@ -1,35 +1,55 @@
 ﻿using Microsoft.Extensions.Configuration;
-
 using RestSharp;
+using Serilog;
 using System.Net;
-
-//https://api.test.datacite.org/dois
-
+using static System.Net.WebRequestMethods;
 
 
+var builder = new ConfigurationBuilder().AddJsonFile($"appsettings.json", false, true);
+var config = builder.AddUserSecrets<Program>().Build();
 
-var builder = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs/Log-.txt"), rollingInterval: RollingInterval.Minute)
+    .CreateLogger();
 var configuration = builder.Build();
+
+const string BASEURL = @"https://api.test.datacite.org/dois";
+
 
 var cred1 = new NetworkCredential()
 {
-    UserName = "john.barrett@curtin.edu.au",
+    UserName = configuration["UserName"],
     Password = configuration["Password"]
 };
 
-//UriBuilder ub = new UriBuilder("")
 
-
-var options = new RestClientOptions("https://api.test.datacite.org/dois");
-options.Credentials = cred1;
+var options = new RestClientOptions(BASEURL)
+{
+    Credentials = cred1
+};
 
 
 var client = new RestClient(options);
 
 var request = new RestRequest("");
-request.AddJsonBody("{\"data\":{\"type\":\"dois\",\"attributes\":{\"types\":{\"resourceTypeGeneral\":\"Audiovisual\"}}}}", false);
-var response = await client.PostAsync(request);
 
-Console.WriteLine("{0}", response.Content);
+// get path to json file
+var path = Path.Combine(@"D:\repos\DataCiteTestingAPI", "data.json");
+
+// readd json from file
+ request.AddJsonBody(System.IO.File.ReadAllText(path), false);
+
+try
+{
+    var response = await client.PostAsync(request);
+    Log.Logger.Information(response.StatusCode.ToString());
+    Log.Logger.Information(messageTemplate: response.Content!);
+    Console.WriteLine("{0}", response.Content);
+}
+catch (HttpRequestException ex)
+{
+    Console.WriteLine("{0}", ex.Message);
+    Console.Read();
+}
