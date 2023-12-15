@@ -9,7 +9,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="logs\**" />
+	  <EmbeddedResource Remove="logs\**" />
+	  <None Remove="logs\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Remove="Rootobject.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove=".gitattributes" />
+	  <None Remove=".gitignore" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -25,10 +36,6 @@
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="logs\" />
 	</ItemGroup>
 
 </Project>
