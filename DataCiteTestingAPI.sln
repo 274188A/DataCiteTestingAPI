@@ -3,12 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34302.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataCiteTestingAPI", "DataCiteTestingAPI.csproj", "{C34293C7-DD72-41A2-93CD-ED768051E9C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataCiteTestingAPI", "DataCiteTestingAPI.csproj", "{C34293C7-DD72-41A2-93CD-ED768051E9C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{65C70111-5A51-43FF-A9A0-0AE5E511CB47}"
-	ProjectSection(SolutionItems) = preProject
-		dataciteschema.xsd = dataciteschema.xsd
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
