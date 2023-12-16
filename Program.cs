@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using RestSharp;
+using RestSharp.Authenticators;
 using Serilog;
-using System.Net;
 
 const string BASEURL = @"https://api.test.datacite.org/dois";
 const string BASEPATH = @"D:\repos\DataCiteTestingAPI";
@@ -17,31 +17,21 @@ Log.Logger = new LoggerConfiguration()
 
 var configuration = builder.Build();
 
-var networkCreds = new NetworkCredential()
-{
-    UserName = configuration["UserName"],
-    Password = configuration["Password"]
-};
-
 var options = new RestClientOptions(BASEURL)
 {
-    Credentials = networkCreds
+    Authenticator = new HttpBasicAuthenticator(configuration["UserName"]!, configuration["Password"]!)
 };
 
-
 var client = new RestClient(options);
-var request = new RestRequest("");
-request.AddHeader("Accept", "application/json");
-
-// get path to json file
 var path = Path.Combine(BASEPATH, "data.json");
 
-// read json from file
- request.AddJsonBody(File.ReadAllText(path), false);
+var request = new RestRequest(File.ReadAllText(path), Method.Get);
+request.AddHeader("Accept", "application/json");
+
 
 try
 {
-    var response = await client.PostAsync(request);        
+    var response = await client.PostAsync(request);
     Log.Information(response.StatusCode.ToString());
     Log.Information(messageTemplate: response.Content!);
     Console.WriteLine("{0}", response.Content);
