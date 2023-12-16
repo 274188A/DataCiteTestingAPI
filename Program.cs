@@ -31,6 +31,7 @@ var options = new RestClientOptions(BASEURL)
 
 var client = new RestClient(options);
 var request = new RestRequest("");
+request.AddHeader("Accept", "application/json");
 
 // get path to json file
 var path = Path.Combine(BASEPATH, "data.json");
@@ -40,7 +41,7 @@ var path = Path.Combine(BASEPATH, "data.json");
 
 try
 {
-    var response = await client.PostAsync(request);
+    var response = await client.PostAsync(request);        
     Log.Information(response.StatusCode.ToString());
     Log.Information(messageTemplate: response.Content!);
     Console.WriteLine("{0}", response.Content);
